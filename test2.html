@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body >
+
+</body>
+<script>
+    var Father = function () {
+
+    };
+    Father.prototype.say = function () {
+        console.log("father say: litx is fat pig"+this.id);
+    };
+
+    var Child = function (id) {
+        this.id = id;
+    };
+    Child.prototype = new Father();
+
+    var c = new Child(2);
+
+    c.say();
+
+    console.log(c);
+
+</script>
+</html>

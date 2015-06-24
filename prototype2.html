@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    function F2(){
+        this.a = 'f2';
+    }
+    function abc() {
+        this.a = 'abc';
+    }
+    abc.prototype.show = function () {
+
+    };
+    abc.prototype.constructor = F2.prototype.constructor;
+    var aa = new abc();
+    console.log(aa);
+    console.log('*********************')
+    var j = {
+        show: function () {
+            console.log('j.show');
+        }
+    };
+
+    var i = {
+        ss: function () {
+            console.log('i.ss')
+        },
+        __proto__: j
+    };
+
+    console.log(j)
+    console.log(i)
+    i.show();
+    i.ss();
+    console.log('*********************')
+    var o = new Object({a:1})
+    console.log(o);
+    console.log(o.__proto__);
+
+</script>
+</html>

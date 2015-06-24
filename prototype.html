@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * Created by uv2sun on 15/5/6.
+     */
+
+    var f1 = function (name) {
+        this.n1 = name;
+        return 'f1';
+    };
+    f1.prototype.show1 = function () {
+        console.log('name:%s', this.n1)
+    };
+
+    var f2 = function (name, id) {
+        this.id = id;
+        f1.call(this, name);
+        return 'f2';
+    };
+    f2.prototype = new f1;
+    f2.prototype.show2 = function () {
+        console.log('id:%s', this.id)
+    };
+
+    var f3 = function (name, id, age) {
+        this.age = age;
+        f2.call(this, name, id);
+        return 'f3';
+    };
+    f3.prototype = new f2;
+    f3.prototype.show3 = function () {
+        console.log('age:%s', this.age);
+    };
+
+    var f = new f3('litx', '9', '99');
+    console.log(f);
+    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~');
+    f.show1();
+    f.show2();
+    f.show3();
+    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~');
+    f1.prototype.show1 = function () {
+        console.log('nickname:%s', this.n1);
+    };
+    f.show1();
+    f.show1 = function () {
+        console.log('middlename:%s', this.n1);
+    };
+    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~');
+    console.log(f);
+    console.log(f3);
+    console.log(f2);
+    console.log(f1);
+    console.log(f3.constructor());
+
+</script>
+</html>
